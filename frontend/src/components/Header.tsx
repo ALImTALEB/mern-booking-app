@@ -14,6 +14,7 @@ const Header = () => {
       >
         <span className="text-3xl text-white font-bold tracking-tight">
           <Link to="/">Zervi.com</Link>
+          <p className="text-sm text-yellow-600">"The app is currently under development, with only the authentication feature available at this stage."</p>
         </span>
         <span className="flex space-x-2">
           {isLoggedIn ? (
