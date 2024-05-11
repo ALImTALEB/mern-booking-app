@@ -12,6 +12,10 @@ const Hero = () => {
         <p className="text-2xl text-white">
           Search low prices on your dream vacation...
         </p>
+        <p className="text-md text-yellow-600">
+          "The app is currently under development, with only the authentication
+          feature available at this stage."
+        </p>
       </div>
     </div>
   );
