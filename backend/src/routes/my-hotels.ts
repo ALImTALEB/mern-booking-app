@@ -44,7 +44,9 @@ router.post(
       const uploadPromises = imageFiles.map(async (image) => {
         const b64 = Buffer.from(image.buffer).toString("base64");
         let dataURI = "data:" + image.mimetype + ";base64," + b64;
-        const res = await cloudinary.v2.uploader.upload(dataURI);
+        const folder = "bookingApp";
+
+        const res = await cloudinary.v2.uploader.upload(dataURI, {folder: folder});
         return res.url;
       });
 

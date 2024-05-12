@@ -77,7 +77,7 @@ const HotelDetailsSection = () => {
         )}
       </label>
 
-      <label className="text-gray-700 font-bold max-w-[40%] md:max-w-[20%]">
+      <label className="text-gray-700 font-bold max-w-[40%] md:max-w-[25%]">
         Price Per Night
         <input
           type="number"

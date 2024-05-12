@@ -19,20 +19,54 @@ export type HotelFormData = {
   imageFiles: FileList;
 };
 
-const ManageHotelForm = () => {
+type Props = {
+  onSave: (HotelFormData: FormData) => void;
+  isLoading: boolean;
+};
+
+const ManageHotelForm = ({ onSave, isLoading }: Props) => {
   const formMethods = useForm<HotelFormData>();
+  const { handleSubmit } = formMethods;
+
+  const onSubmit = handleSubmit((formDataJson: HotelFormData) => {
+    const formData = new FormData();
+    formData.append("name", formDataJson.name);
+    formData.append("city", formDataJson.city);
+    formData.append("country", formDataJson.country);
+    formData.append("description", formDataJson.description);
+    formData.append("type", formDataJson.type);
+    formData.append("pricePerNight", formDataJson.pricePerNight.toString());
+    formData.append("starRating", formDataJson.starRating.toString());
+    formData.append("adultCount", formDataJson.adultCount.toString());
+    formData.append("childCount", formDataJson.adultCount.toString());
+
+    formDataJson.facilities.forEach((facility, index) => {
+      formData.append(`facilities[${index}]`, facility);
+    });
+
+    Array.from(formDataJson.imageFiles).forEach((imageFile) => {
+      formData.append(`imageFiles`, imageFile);
+    });
+
+    onSave(formData);
+  });
+
   return (
     <FormProvider {...formMethods}>
-      <form className="px-2 flex flex-col gap-5">
+      <form onSubmit={onSubmit} className="px-2 flex flex-col gap-5">
         <HotelDetailsSection />
         <TypeSection />
         <FacilitiesSection />
         <GuestsSection />
         <ImagesSection />
-        <span className="flex justify-end" >
-            <button type="submit" className="bg-blue-600 text-white py-2 px-6 font-bold hover:bg-blue-500 text-xl rounded" >
-                Save
-            </button>
+        <span className="flex justify-end">
+          <button
+            disabled={isLoading}
+            type="submit"
+            className="bg-blue-600 text-white py-2 px-6 font-bold hover:bg-blue-500 text-xl rounded disabled:bg-gray-500"
+          >
+            {isLoading ? "Saving..." : "Save"}
+          </button>
         </span>
       </form>
     </FormProvider>

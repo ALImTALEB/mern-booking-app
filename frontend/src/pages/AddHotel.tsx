@@ -1,9 +1,24 @@
-import ManageHotelForm from "../forms/ManageHotelForm/ManageHotelForm"
+import { useMutation } from "react-query";
+import ManageHotelForm from "../forms/ManageHotelForm/ManageHotelForm";
+import * as apiClient from "../../api-client";
+import { useAppContext } from "../contexts/AppContext";
 
 const AddHotel = () => {
-  return (
-    <ManageHotelForm />
-  )
-}
+  const { showToast } = useAppContext();
 
-export default AddHotel
+  const { mutate, isLoading } = useMutation(apiClient.addMyHotel, {
+    onSuccess: () => {
+      showToast({ message: "Hotel Saved!", type: "SUCCESS" });
+    },
+    onError: () => {
+      showToast({ message: "Error Saving Hotel", type: "ERROR" });
+    },
+  });
+
+  const handleSave = (HotelFormData: FormData) => {
+    mutate(HotelFormData);
+  };
+  return <ManageHotelForm onSave={handleSave} isLoading={isLoading} />;
+};
+
+export default AddHotel;
