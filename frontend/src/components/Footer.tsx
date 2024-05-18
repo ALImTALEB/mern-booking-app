@@ -12,7 +12,7 @@ const Footer = () => {
           md:text-3xl
         text-white font-bold tracking-tight"
         >
-          Zervi.com
+          PexaBooking
         </h2>
         <nav className="text-white font-bold tracking-tight flex flex-col">
           <a

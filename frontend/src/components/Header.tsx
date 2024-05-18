@@ -16,7 +16,7 @@ const Header = () => {
       "
       >
         <span className="text-3xl text-white font-bold tracking-tight">
-          <Link to="/">Zervi.com</Link>
+          <Link to="/">PexaBooking</Link>
         </span>
         <span className="hidden md:flex space-x-2">
           {isLoggedIn ? (
