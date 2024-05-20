@@ -150,20 +150,26 @@ export const searchHotels = async (
     queryParams.append("facilities", facility)
   );
 
-  SearchParams.types?.forEach((type) =>
-    queryParams.append("types", type)
-  );
+  SearchParams.types?.forEach((type) => queryParams.append("types", type));
 
-  SearchParams.stars?.forEach((star) =>
-    queryParams.append("stars", star)
-  );
+  SearchParams.stars?.forEach((star) => queryParams.append("stars", star));
 
   const response = await fetch(
     `${API_BASE_URL}/api/hotels/search?${queryParams}`
   );
 
   if (!response.ok) {
-    throw new Error("Failed to update Hotel");
+    throw new Error("Failed fetching Hotels");
+  }
+
+  return response.json();
+};
+
+export const fetchHotelById = async (hotelId: string): Promise<HotelType> => {
+  const response = await fetch(`${API_BASE_URL}/api/hotels/${hotelId}`);
+
+  if (!response.ok) {
+    throw new Error("Failed fetching Hotels");
   }
 
   return response.json();
