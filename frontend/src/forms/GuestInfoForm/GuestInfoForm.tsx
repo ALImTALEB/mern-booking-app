@@ -68,7 +68,7 @@ const GuestInfoForm = ({ hotelId, pricePerNight }: Props) => {
 
   return (
     <div className="flex flex-col p-4 bg-blue-200 gap-4">
-      <h3 className="text-md font-bold"> DT- {pricePerNight} </h3>
+      <h3 className="text-md font-bold">Total Cost: TND {pricePerNight} </h3>
       <form
         onSubmit={
           isLoggedIn ? handleSubmit(onSubmit) : handleSubmit(onSignInClick)
@@ -99,7 +99,7 @@ const GuestInfoForm = ({ hotelId, pricePerNight }: Props) => {
               endDate={checkOut}
               minDate={minDate}
               maxDate={maxDate}
-              placeholderText="Check-in Date"
+              placeholderText="Check-out Date"
               className="w-full bg-white p-2 focus:outline-nonene"
               wrapperClassName="min-w-full"
             />

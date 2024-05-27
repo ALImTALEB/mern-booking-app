@@ -72,7 +72,7 @@ const Search = () => {
     <div className="px-2">
       <div className="grid grid-cols-1 xl:grid-cols-[250px_1fr] gap-5">
         <div className=" xl:flex xl:flex-col xl:rounded-lg xl:border xl:border-slate-300 xl:p-5 xl:h-fit xl:sticky xl:top-10">
-        <h4 className="text-md font-semibold mb-2">Filter By :</h4>
+          <h4 className="text-md font-semibold mb-2">Filter By :</h4>
           <div className="space-y-5">
             <h3 className="text-lg font-semibold border-b border-slate-300 pb-5"></h3>
             <StarRatingFilter
@@ -104,14 +104,14 @@ const Search = () => {
               onChange={(event) => setSortOption(event.target.value)}
               className="p-2 border rounded-md"
             >
-            <option value="">Sort By</option>
-            <option value="starRating">Star Rating</option>
-            <option value="pricePerNight">
-              Price Per Night (low to high)
-            </option>
-            <option value="pricePerNightDesc">
-              Price Per Night (high to low)
-            </option>
+              <option value="">Sort By</option>
+              <option value="starRating">Star Rating</option>
+              <option value="pricePerNight">
+                Price Per Night (low to high)
+              </option>
+              <option value="pricePerNightDesc">
+                Price Per Night (high to low)
+              </option>
             </select>
           </div>
           {hotelData?.data.map((hotel) => (
